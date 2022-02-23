@@ -4,7 +4,7 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+    return customers.map(customer => `Hello ${customer.first_name} ${customer.last_name}`);
 }
 
 /* 
@@ -13,7 +13,9 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return true;
+    return customers
+        .filter(customer => customer.age > 60)
+        .map(customer => `Hello ${customer.first_name} ${customer.last_name}`);
 }
 
 
@@ -21,9 +23,17 @@ export function greetUsersOverAge60(customers) {
 Output: 
 4532
 */
+// const sum = people.reduce((accumulator, currentPerson) => {
+//     const numberSoFar = accumulator + currentPerson.age;
 
+//     return numberSoFar;
+// }, 0)
 export function addAllAges(customers) {
-    return true;
+    return customers.reduce((accumulator, currentCustomer) => {
+        const ageSoFar = accumulator + currentCustomer.age;
+
+        return ageSoFar;
+    }, 0);
 }
 
 /* 
@@ -32,7 +42,13 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    return customers.reduce(
+        (accumlator, customer) => {
+            const sum = accumlator + customer.cool_factor;
+            const averageCoolFactor = sum / customers.length;
+            return averageCoolFactor;
+        }, 0
+    );
 }
 
 /* 
@@ -44,9 +60,26 @@ Output:
     etc . . .
 }
 */
+// const countingHashMap = {};
 
+// for (let animal of animals) {
+//     // check to see if my hashMap already has a value with this key
+//     if (countingHashMap[animal.type]) {
+//         // if it does, increment
+//         countingHashMap[animal.type]++
+//     } else {
+//         // if it does NOT initialize
+//         countingHashMap[animal.type] = 1
+//     }
+// }
 export function getTotalOfEachGender(customers) {
-    return true;
+    const genderHashMap = {};
+    for(let customer of customers) {
+        if(genderHashMap[customer.gender]) {
+            genderHashMap[customer.gender]++;
+        } else genderHashMap[customer.gender] = 1;
+    }
+    return genderHashMap;
 }
 
 /* 
@@ -60,7 +93,16 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordCustomers = customers.filter(customer => customer.car_make === 'Ford');
+    const fordOwnerGenderHash = {};
+    for(let customer of fordCustomers) {
+        if(fordOwnerGenderHash[customer.gender]) {
+            fordOwnerGenderHash[customer.gender]++;
+        } else {
+            fordOwnerGenderHash[customer.gender] = 1;
+        }
+    }
+    return fordOwnerGenderHash;
 }
 
 
