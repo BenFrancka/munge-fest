@@ -60,9 +60,26 @@ Output:
     etc . . .
 }
 */
+// const countingHashMap = {};
 
+// for (let animal of animals) {
+//     // check to see if my hashMap already has a value with this key
+//     if (countingHashMap[animal.type]) {
+//         // if it does, increment
+//         countingHashMap[animal.type]++
+//     } else {
+//         // if it does NOT initialize
+//         countingHashMap[animal.type] = 1
+//     }
+// }
 export function getTotalOfEachGender(customers) {
-    return true;
+    const genderHashMap = {};
+    for(let customer of customers) {
+        if(genderHashMap[customer.gender]) {
+            genderHashMap[customer.gender]++;
+        } else genderHashMap[customer.gender] = 1;
+    }
+    return genderHashMap;
 }
 
 /* 
