@@ -1,5 +1,6 @@
 // IMPORT MODULES under test here:
 import { 
+    addAllAges,
     greetUsers, greetUsersOverAge60,
 } from '../functions.js';
 import customers from './data.js';
@@ -88,9 +89,9 @@ test('greetUsersOverAge60', (expect) => {
 });
 
 test('addAllAges', (expect) => {
-    const expected = true;
+    const expected = 2125;
 
-    const actual = greetUsers();
+    const actual = addAllAges(customers);
 
     expect.equal(actual, expected);
 });

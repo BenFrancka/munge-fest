@@ -23,9 +23,17 @@ export function greetUsersOverAge60(customers) {
 Output: 
 4532
 */
+// const sum = people.reduce((accumulator, currentPerson) => {
+//     const numberSoFar = accumulator + currentPerson.age;
 
+//     return numberSoFar;
+// }, 0)
 export function addAllAges(customers) {
-    return true;
+    return customers.reduce((accumulator, currentCustomer) => {
+        const ageSoFar = accumulator + currentCustomer.age;
+
+        return ageSoFar;
+    }, 0);
 }
 
 /* 
