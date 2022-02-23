@@ -1,6 +1,7 @@
 // IMPORT MODULES under test here:
 import { 
     addAllAges,
+    getAverageCoolFactor,
     greetUsers, greetUsersOverAge60,
 } from '../functions.js';
 import customers from './data.js';
@@ -97,10 +98,10 @@ test('addAllAges', (expect) => {
 });
 
 
-skip('getAverageCoolFactor', (expect) => {
-    const expected = true;
+test('getAverageCoolFactor', (expect) => {
+    const expected = 0.04792394209979564;
 
-    const actual = greetUsers();
+    const actual = getAverageCoolFactor(customers);
 
     expect.equal(actual, expected);
 });
