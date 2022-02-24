@@ -3,6 +3,8 @@ import {
     addAllAges,
     getAllCoolFactorsOfEachCar,
     getAverageCoolFactor,
+    getAverageCoolFactorOfEachCar,
+    getGenderBreakdownOfEachCar,
     getGenderBreakdownOfFordOwners,
     getTotalOfEachGender,
     greetUsers, greetUsersOverAge60,
@@ -137,11 +139,11 @@ test('getGenderBreakdownOfFordOwners', (expect) => {
 });
 
 skip('getGenderBreakdownOfEachCar', (expect) => {
-    const expected = true;
+    const expected = {};
 
-    const actual = greetUsers();
+    const actual = getGenderBreakdownOfEachCar(customers);
 
-    expect.equal(actual, expected);
+    expect.deepEqual(actual, expected);
 });
 
 test('getAllCoolFactorsOfEachCar', (expect) => {
@@ -252,12 +254,41 @@ test('getAllCoolFactorsOfEachCar', (expect) => {
     expect.deepEqual(actual, expected);
 });
 
-skip('getAverageCoolFactorOfEachCar', (expect) => {
-    const expected = true;
+test('getAverageCoolFactorOfEachCar', (expect) => {
+    const expected = 	
+    {
+        'Alfa Romeo': '6.0',
+        'Audi': '1.0',
+        'BMW': '5.0',
+        'Buick': '3.5',
+        'Cadillac': '4.0',
+        'Chevrolet': '5.0',
+        'Chrysler': '6.5',
+        'Dodge': '9.3',
+        'Eagle': '9.0',
+        'Ford': '5.7',
+        'GMC': '7.5',
+        'Infiniti': '2.0',
+        'Jeep': '5.0',
+        'Kia': '2.0',
+        'Lexus': '4.0',
+        'Mazda': '3.0',
+        'Mercedes-Benz': '3.0',
+        'Mercury': '2.0',
+        'Mitsubishi': '4.0',
+        'Oldsmobile': '5.0',
+        'Peugeot': '1.0',
+        'Pontiac': '8.0',
+        'Porsche': '7.5',
+        'Scion': '2.0',
+        'Subaru': '2.0',
+        'Toyota': '3.5',
+        'Volvo': '6.5'
+    };
 
-    const actual = greetUsers();
+    const actual = getAverageCoolFactorOfEachCar(customers);
 
-    expect.equal(actual, expected);
+    expect.deepEqual(actual, expected);
 });
 
 skip('getAverageCoolFactor', (expect) => {
