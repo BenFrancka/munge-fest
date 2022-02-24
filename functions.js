@@ -124,7 +124,7 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+    
 }
 
 /* 
@@ -139,7 +139,14 @@ Output:
 
 
 export function getAllCoolFactorsOfEachCar(customers) {
-    return true;
+    return customers.reduce(
+        (accumlator, current) => {
+            if(!accumlator[current.car_make]) {
+                accumlator[current.car_make] = [];
+            }
+            accumlator[current.car_make].push(current.cool_factor);
+            return accumlator;
+        }, {});
 }
 
 /* 
@@ -150,9 +157,28 @@ Output:
     honda: 2.3
 }
 */
-
+// export function getAverageCoolFactor(customers) {
+//     return customers.reduce(
+//         (accumlator, customer) => {
+//             const sum = accumlator + customer.cool_factor;
+//             const averageCoolFactor = sum / customers.length;
+//             return averageCoolFactor;
+//         }, 0
+//     );
+// }
 export function getAverageCoolFactorOfEachCar(customers) {
-    return true;
+    const coolFactorsByCar = customers.reduce((acumulator, customer) => {
+        if(!acumulator[customer.car_make]) {
+            acumulator[customer.car_make] = [];
+        }
+        acumulator[customer.car_make].push(customer.cool_factor);
+        return acumulator;
+    }, {});
+
+    return Object.entries(coolFactorsByCar).reduce((acumulator, entry) => {
+        const entryAvg = (entry[1].reduce((acumulator, curr) => acumulator + curr, 0) / entry[1].length).toFixed(1);
+        return { ...acumulator, [entry[0]] : entryAvg };
+    }, {});
 }
 
 
